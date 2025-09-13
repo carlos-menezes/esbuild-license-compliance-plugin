@@ -1,0 +1,54 @@
+{
+  "name": "esbuild-license-compliance-plugin",
+  "version": "0.2.0",
+  "type": "module",
+  "description": "esbuild plugin to check license compliance of your dependencies",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "types": "./dist/types/index.d.ts",
+  "files": [
+    "dist/",
+    "README.md"
+  ],
+  "scripts": {
+    "format": "biome format --write",
+    "lint": "biome lint --write",
+    "clean": "rimraf dist",
+    "build": "pnpm run clean && node esbuild.config.ts && tsc",
+    "prepare": "husky"
+  },
+  "keywords": [
+    "esbuild",
+    "plugin",
+    "license",
+    "compliance"
+  ],
+  "author": "Carlos Menezes <talk@carlos-menezes.com>",
+  "license": "MIT",
+  "packageManager": "pnpm@10.16.0",
+  "devDependencies": {
+    "@biomejs/biome": "2.2.4",
+    "@types/node": "^24.3.2",
+    "esbuild": "^0.25.9",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.6",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.9.2"
+  },
+  "peerDependencies": {
+    "esbuild": "^0.25.9"
+  },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "pnpm lint",
+      "pnpm format"
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+# Source files
+src/
+tsconfig.json
+esbuild.config.ts
+biome.json
+pnpm-workspace.yaml
+
+# Development files
+.husky/
+node_modules/
+.git/
+.gitignore
+
+# Lock files
+pnpm-lock.yaml
+
+# Build artifacts (keep dist for publishing)
+!dist/

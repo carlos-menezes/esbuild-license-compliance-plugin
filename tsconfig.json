@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "strict": true,
+    "types": ["node"],
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "outDir": "dist/types"
+  },
+  "include": ["src/**/*.ts"]
+}
