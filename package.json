@@ -1,6 +1,6 @@
 {
   "name": "esbuild-license-compliance-plugin",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "description": "esbuild plugin to check license compliance of your dependencies",
   "main": "./dist/cjs/index.js",

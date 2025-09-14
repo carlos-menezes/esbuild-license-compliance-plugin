@@ -48,6 +48,17 @@ export interface LicenseComplianceOptions {
 	 * @example  ['eslint-*', 'some-package']
 	 */
 	ignores?: string[];
+	/**
+	 * Specify which dependency types to scan.
+	 * If not specified, all types will be scanned.
+	 * @example ['dependencies', 'devDependencies']
+	 */
+	dependencies?: (
+		| "dependencies"
+		| "devDependencies"
+		| "optionalDependencies"
+		| "peerDependencies"
+	)[];
 }
 
 interface PackageInfo {
@@ -236,17 +247,30 @@ async function scanDirectPackage(
 	}
 }
 
-export async function scanPackages(): Promise<PackageInfo[]> {
+export async function scanPackages(
+	options: LicenseComplianceOptions = {},
+): Promise<PackageInfo[]> {
 	const packageJsonPath = findPackageJson();
 	if (!packageJsonPath) throw new Error("package.json not found");
 
 	const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
-	const allDependencies = {
-		...packageJson.dependencies,
-		...packageJson.devDependencies,
-		...packageJson.optionalDependencies,
-		...packageJson.peerDependencies,
-	};
+
+	// Default to all dependency types if not specified
+	const dependencyTypes = options.dependencies || [
+		"dependencies",
+		"devDependencies",
+		"optionalDependencies",
+		"peerDependencies",
+	];
+
+	const allDependencies: Record<string, string> = {};
+
+	// Only include specified dependency types
+	for (const depType of dependencyTypes) {
+		if (packageJson[depType]) {
+			Object.assign(allDependencies, packageJson[depType]);
+		}
+	}
 
 	const basePath = path.dirname(packageJsonPath);
 

@@ -21,5 +21,4 @@ Promise.all([
 		target: "node14",
 		external: ["esbuild"],
 	}),
-])
-	.catch(() => process.exit(1));
+]).catch(() => process.exit(1));

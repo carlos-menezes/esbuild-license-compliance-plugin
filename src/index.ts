@@ -17,7 +17,7 @@ function licenseCompliancePlugin(options?: LicenseComplianceOptions): Plugin {
 		setup(build: PluginBuild) {
 			build.onStart(async () => {
 				try {
-					const packages = await scanPackages();
+					const packages = await scanPackages(options);
 					const violations = checkLicenseCompliance(packages, options || {});
 
 					if (violations.length > 0) {
