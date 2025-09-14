@@ -30,6 +30,7 @@ await build({
 
 ## Options
 
-- `allowed` - Array of SPDX license IDs that are allowed
-- `disallowed` - Array of SPDX license IDs that are not allowed
-- `ignores` - Array of package name patterns to ignore (supports glob patterns)
+- `allowed` - Array of SPDX license IDs that are allowed.
+- `disallowed` - Array of SPDX license IDs that are not allowed.
+- `ignores` - Array of package name patterns to ignore (supports glob patterns).
+- `dependencies` - Specify which dependency types to scan. If not specified, all types will be scanned.
