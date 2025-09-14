@@ -1,5 +1,7 @@
 # esbuild-license-compliance-plugin
 
+![NPM Version](https://img.shields.io/npm/v/esbuild-license-compliance-plugin?style=for-the-badge) ![NPM Downloads](https://img.shields.io/npm/dw/esbuild-license-compliance-plugin?style=for-the-badge)
+
 An `esbuild` plugin that checks license compliance of your dependencies during build time.
 
 ## Install
